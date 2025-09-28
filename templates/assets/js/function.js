@@ -282,9 +282,27 @@ function postMarkHighlight(){
 }
 
 function postTableHighlight(){
-  document.querySelectorAll('.prose table').forEach(el => {
-    el.parentNode.setAttribute('class','wp-block-table')
-  });
+  let tableDomList = document.querySelectorAll('.prose table');
+  let postType = '';
+  // 通过表格元素的父元素id是否为content判断文章是Markdown格式编写的还是富文本编辑器编写的
+  // 只需要取其中一个判断即可
+  if (tableDomList.length > 0) {
+    postType = tableDomList[0].parentNode.id === 'content' ? 'Markdown' : 'RichText';
+  }
+  // 如果是Markdown，则需要在表格外再套一层div
+  if (postType === 'Markdown') {
+    tableDomList.forEach(el => {
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('wp-block-table');
+      wrapper.style.overflow = 'auto hidden';
+      el.parentNode.insertBefore(wrapper, el);
+      wrapper.appendChild(el);
+    });
+  } else {
+    tableDomList.forEach(el => {
+      el.parentNode.classList.add('wp-block-table');
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
