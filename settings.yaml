@@ -160,6 +160,10 @@ spec:
           language: html
           value: '<p style="font-weight: 400;">很高兴能和非常多的朋友们交流，如果你也想加入友链，可以点击下方添加按钮进行申请。<mark>（本站已开启友链提交自动审核，您的链接将会第一时间被添加。）</mark></p><div style="height:1rem" aria-hidden="true" class="wp-block-spacer"></div><ul class="wp-block-list thyuu-block"><li>1. 交流互动并且保持联系（重点）；</li><li>2. 至少有 10 篇原创文章；</li><li>3. 请提前做好本站链接。</li></ul>'
         - $formkit: text
+          name: subtitle
+          label: 简述
+          validation: required
+        - $formkit: text
           name: admin_email
           label: 邮箱
           validation: required
