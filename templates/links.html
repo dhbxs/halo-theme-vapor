@@ -77,7 +77,8 @@
                 <span class="text-lime-500">订阅</span><em th:text="${site.url+'/rss.xml'}"></em>
               </li>
               <li class="flex gap-2">
-                <span class="text-lime-500">标识</span><em th:text="${site.url+site.logo}"></em>
+                <span class="text-lime-500">标识</span>
+                <em th:text="${site.logo.startsWith('http') ? site.logo : site.url + site.logo}"></em>
               </li>
             </ul>
           </details>
