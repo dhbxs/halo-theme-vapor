@@ -68,7 +68,7 @@
             <summary>我的友链信息</summary>
             <ul id="copy" class="space-y-2 text-sm">
               <li class="flex gap-2"><span class="text-lime-500">站名</span><em th:text="${site.title}"></em></li>
-              <li class="flex gap-2"><span class="text-lime-500">简述</span><em th:text="${site.subtitle}"></em></li>
+              <li class="flex gap-2"><span class="text-lime-500">简述</span><em th:text="${theme.config.links.subtitle}"></em></li>
               <li class="flex gap-2">
                 <span class="text-lime-500">邮箱</span><em th:text="${theme.config.links.admin_email}"></em>
               </li>
@@ -77,7 +77,8 @@
                 <span class="text-lime-500">订阅</span><em th:text="${site.url+'/rss.xml'}"></em>
               </li>
               <li class="flex gap-2">
-                <span class="text-lime-500">标识</span><em th:text="${site.url+site.logo}"></em>
+                <span class="text-lime-500">标识</span>
+                <em th:text="${site.logo.startsWith('http') ? site.logo : site.url + site.logo}"></em>
               </li>
             </ul>
           </details>
