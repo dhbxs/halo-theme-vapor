@@ -25,16 +25,12 @@
       class="relative flex w-full flex-1 shrink-0 flex-col justify-between gap-0.5 rounded-b-[calc(1.5rem+1px)] bg-cover bg-bottom bg-no-repeat p-4 text-white bg-blend-overlay [background-image:var(--post-image)] before:pointer-events-none before:absolute before:inset-0 before:z-10 before:select-none before:rounded-b-[calc(1.5rem-1px)] before:bg-[--post-image-bg] before:opacity-70 before:transition-opacity after:pointer-events-none after:absolute after:inset-0 after:z-10 after:select-none after:rounded-b-[calc(1.5rem-1px)] after:bg-gradient-to-b after:from-transparent after:to-[--post-image-bg] after:backdrop-blur after:transition-opacity group-hover:before:opacity-30 md:p-5"
     >
       <h2
-        class="z-20 text-base font-bold tracking-tight opacity-70 transition-opacity group-hover:opacity-100 md:text-xl"
+        class="z-20 truncate text-base font-bold tracking-tight opacity-70 transition-opacity group-hover:opacity-100 md:text-xl"
         th:text="${post.spec.title}"
-        style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
       ></h2>
       <span
         class="relative z-20 mt-auto flex items-center justify-between opacity-50 transition-opacity group-hover:opacity-80"
       >
-        <!-- <span class="inline-flex items-center space-x-3">
-          
-        </span> -->
         <span class="inline-flex items-center space-x-1 text-[12px] md:text-sm">
           <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -45,10 +41,7 @@
               stroke-linejoin="round"
             ></path>
           </svg>
-          <span
-            th:text="${#dates.format(post.spec.publishTime,'yyyy/MM/dd')}"
-            style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
-          ></span>
+          <span class="truncate" th:text="${#dates.format(post.spec.publishTime,'yyyy/MM/dd')}"></span>
         </span>
         <span
           th:if="${not #lists.isEmpty(post.categories)} or ${not #lists.isEmpty(post.tags)}"
@@ -58,29 +51,19 @@
           <th:block th:if="${#lists.size(post.categories)} gt 0">
             <i class="iconfont icon-cate text-sm"></i>
             <span
+              class="truncate"
               th:title="${post.categories[0].spec.displayName}"
               th:text="${post.categories[0].spec.displayName}"
-              style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
             ></span>
           </th:block>
         </span>
         <span class="inline-flex items-center space-x-1" style="max-width: 25%">
           <i class="iconfont icon-views1 text-sm"></i>
-          <span
-            class="format-num"
-            th:data-num="${post.stats.visit}"
-            style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
-            >[[${post.stats.visit}]]</span
-          >
+          <span class="format-num truncate" th:data-num="${post.stats.visit}">[[${post.stats.visit}]]</span>
         </span>
         <span class="inline-flex items-center space-x-1" style="max-width: 25%">
           <i class="iconfont icon-friends text-sm"></i>
-          <span
-            class="format-num"
-            th:data-num="${post.stats.comment}"
-            style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
-            >[[${post.stats.comment}]]</span
-          >
+          <span class="format-num truncate" th:data-num="${post.stats.comment}">[[${post.stats.comment}]]</span>
         </span>
       </span>
     </div>
