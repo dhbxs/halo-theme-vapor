@@ -1,16 +1,15 @@
 .toc {
-  @apply space-y-1 cursor-pointer;
+  @apply cursor-pointer space-y-1;
 
   .toc-link {
-    @apply block py-2 border-zinc-800 font-medium hover:text-zinc-700 dark:hover:text-zinc-400 text-zinc-400 dark:text-zinc-600;
+    @apply block border-zinc-800 py-2 font-medium text-zinc-400 hover:text-zinc-700 dark:text-zinc-600 dark:hover:text-zinc-400;
   }
 
-  .is-active-li a {
-    @apply text-zinc-900 dark:text-zinc-400 border-zinc-600 font-bold text-sm;
+  .is-active-link {
+    @apply border-zinc-600 text-sm font-bold text-zinc-900 dark:text-zinc-400;
   }
 
   .toc-list-item {
-
     --trfm: scaleY(0.95) translateY(1rem);
     --filter: blur(10px);
     animation: var(--animation);
@@ -18,11 +17,11 @@
     animation-delay: var(--delay, 0.4s);
 
     a {
-      transition: all .35s;
+      transition: all 0.35s;
     }
   }
 
-  .toc-list-item .toc-list a {
+  .toc-list-item .toc-list {
     padding-left: 1em;
   }
 }
@@ -116,7 +115,6 @@ aside,
 }
 
 #content {
-
   h1,
   h2,
   h3,
@@ -126,8 +124,8 @@ aside,
     position: relative;
 
     &:after {
-      content: ' #';
-      transition: opacity .3s;
+      content: " #";
+      transition: opacity 0.3s;
       display: inline;
       user-select: none;
       opacity: 0;
