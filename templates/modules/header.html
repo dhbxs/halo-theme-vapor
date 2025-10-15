@@ -172,15 +172,29 @@
         <a id="theme-toggle-icon" class="iconfont has-tip" title="切换浅色模式" role="button"></a>
       </button>
 
-      <th:block th:if="${roleName == 'super-role'}">
-        <a href="/console" target="_blank" th:data-tooltip="去后台">
+      <a href="/console" target="_blank" th:data-tooltip="${roleName == 'super-'?'登录':'去后台'}">
+        <th:block th:if="${roleName == 'super-'}">
           <img
+            th:src="@{/assets/imgs/default.jpg}"
+            alt="登录"
+            class="size-8 rounded-full shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:ring-white/10 dark:hover:ring-white/20"
+          />
+        </th:block>
+        <th:block th:else>
+          <img
+            th:if="${not #strings.isEmpty(contributor.avatar)}"
             th:src="${contributor.avatar}"
             alt="去后台"
             class="size-8 rounded-full shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:ring-white/10 dark:hover:ring-white/20"
           />
-        </a>
-      </th:block>
+          <img
+            th:if="${#strings.isEmpty(contributor.avatar)}"
+            th:src="@{/assets/imgs/default.jpg}"
+            alt="去后台"
+            class="size-8 rounded-full shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:ring-white/10 dark:hover:ring-white/20"
+          />
+        </th:block>
+      </a>
     </div>
   </div>
 </header>
