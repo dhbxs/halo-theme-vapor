@@ -261,7 +261,7 @@
     /**
      * 给img增加一些装饰
      */
-    document.querySelectorAll(".prose p>img").forEach((el) => {
+    document.querySelectorAll(".prose p>img, .prose li>img").forEach((el) => {
       if (!el.getAttribute("data-fancybox")) {
         const classes = el.class;
         el.setAttribute(
@@ -269,8 +269,11 @@
           "relative z-20 dark:brightness-75 dark:transition-[filter] rounded-xl dark:hover:brightness-100 rounded-xl" +
             classes
         );
-        el.parentNode.setAttribute("class", "rounded-2xl bg-zinc-100 p-2 dark:bg-zinc-800");
         el.setAttribute("data-fancybox", "images");
+        const wrapper = document.createElement("div");
+        wrapper.setAttribute("class", "rounded-2xl bg-zinc-100 p-2 dark:bg-zinc-800 w-fit");
+        el.parentNode.insertBefore(wrapper, el);
+        wrapper.appendChild(el);
         const altText = el.getAttribute("alt");
         if (!altText) return;
         const span = document.createElement("span");
