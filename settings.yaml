@@ -66,6 +66,18 @@ spec:
                   value: telegram
                 - label: 首页邮箱
                   value: email
+                - label: 微博链接
+                  value: weibo
+                - label: 微信（个人）
+                  value: weixin
+                - label: 微信公众号
+                  value: weixin_mp
+                - label: 小红书
+                  value: xiaohongshu
+                - label: 酷安
+                  value: coolapk
+                - label: 社区/论坛
+                  value: community
             - $formkit: text
               name: home_links_url
               label: 链接

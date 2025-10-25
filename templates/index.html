@@ -100,15 +100,36 @@
                 <th:block th:each="link : ${theme.config.layout.home_links}">
                   <a
                     data-state="closed"
-                    aria-label="我的推特"
                     th:if="${link.home_links_url}"
                     th:href="@{${link.home_links_url}}"
                     target="_blank"
                     class="group -m-1 p-1"
+                    th:attr="aria-label=${
+                      link.value == 'twitter' ? '我的推特' :
+                      link.value == 'youtube' ? '我的YouTube' :
+                      link.value == 'bilibili' ? '我的哔哩哔哩' :
+                      link.value == 'github' ? '我的GitHub' :
+                      link.value == 'telegram' ? '我的Telegram' :
+                      link.value == 'email' ? '我的邮箱' :
+                      link.value == 'weibo' ? '我的微博' :
+                      link.value == 'weixin' ? '我的微信' :
+                      link.value == 'weixin_mp' ? '我的微信公众号' :
+                      link.value == 'xiaohongshu' ? '我的小红书' :
+                      link.value == 'coolapk' ? '我的酷安' :
+                      link.value == 'community' ? '我的社区' : '社交链接'
+                    }"
                   >
                     <i
                       class="iconfont text-xl text-zinc-400 transition group-hover:text-zinc-700 dark:text-zinc-400 dark:group-hover:text-zinc-200"
-                      th:classappend="|icon-${link.value}|"
+                      th:classappend="${
+                        link.value == 'weibo' ? ' icon-weibo-fill' :
+                        link.value == 'weixin' ? ' icon-weixin' :
+                        link.value == 'weixin_mp' ? ' icon-weixin' :
+                        link.value == 'community' ? ' icon-shequ' :
+                        link.value == 'xiaohongshu' ? ' icon-link' :
+                        link.value == 'coolapk' ? ' icon-link' :
+                        (' icon-' + link.value)
+                      }"
                     ></i>
                   </a>
                 </th:block>
