@@ -78,9 +78,16 @@ spec:
                   value: coolapk
                 - label: 社区/论坛
                   value: community
+                - label: 自定义
+                  value: custom
             - $formkit: text
               name: home_links_url
               label: 链接
+            - $formkit: attachment
+              if: '$value.value === "custom"'
+              name: custom_icon
+              label: 自定义图标
+              help: "请选择图标，推荐使用SVG格式图标。"
 
     - group: style
       label: 文案与样式

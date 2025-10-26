@@ -116,21 +116,68 @@
                       link.value == 'weixin_mp' ? '我的微信公众号' :
                       link.value == 'xiaohongshu' ? '我的小红书' :
                       link.value == 'coolapk' ? '我的酷安' :
-                      link.value == 'community' ? '我的社区' : '社交链接'
+                      link.value == 'community' ? '我的社区' :
+                      link.value == 'custom' ? '自定义链接' : '社交链接'
                     }"
                   >
-                    <i
-                      class="iconfont text-xl text-zinc-400 transition group-hover:text-zinc-700 dark:text-zinc-400 dark:group-hover:text-zinc-200"
-                      th:classappend="${
-                        link.value == 'weibo' ? ' icon-weibo-fill' :
-                        link.value == 'weixin' ? ' icon-weixin' :
-                        link.value == 'weixin_mp' ? ' icon-weixin' :
-                        link.value == 'community' ? ' icon-shequ' :
-                        link.value == 'xiaohongshu' ? ' icon-link' :
-                        link.value == 'coolapk' ? ' icon-link' :
-                        (' icon-' + link.value)
-                      }"
-                    ></i>
+                    <th:block th:switch="${link.value}">
+                      <th:block th:case="'custom'">
+                        <!-- SVG 格式：使用 mask 来实现主题颜色联动 -->
+                        <div
+                          th:if="${link.custom_icon != null and #strings.endsWith(link.custom_icon, '.svg')}"
+                          class="h-6 w-6 text-zinc-400 transition group-hover:text-zinc-700 dark:text-zinc-400 dark:group-hover:text-zinc-200"
+                          th:style="'background-color: currentColor; mask-image: url(' + ${link.custom_icon} + '); -webkit-mask-image: url(' + ${link.custom_icon} + '); mask-size: contain; -webkit-mask-size: contain; mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat; mask-position: center; -webkit-mask-position: center;'"
+                        ></div>
+                        <!-- 非 SVG 格式：直接使用 img 标签 -->
+                        <img
+                          th:if="${link.custom_icon != null and not #strings.endsWith(link.custom_icon, '.svg')}"
+                          th:src="${link.custom_icon}"
+                          class="h-6 w-6"
+                        />
+                      </th:block>
+                      <th:block th:case="'coolapk'">
+                        <svg
+                          class="w-6 text-zinc-400 transition group-hover:text-zinc-700 dark:text-zinc-400 dark:group-hover:text-zinc-200"
+                          viewBox="0 0 1922 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M513.810604 0c308.858273 0 602.991192 297.820939 602.991192 297.820939l-132.287657 102.890399S723.386322 178.321089 513.810604 178.321089c-143.391802 0-329.062206 104.787859-329.062206 323.556901 0 213.250375 136.029126 334.594235 330.906216 334.594235C1023.05127 836.485587 1203.216369 0 1363.15081 0c104.787859 0 175.047303 244.772252 297.820938 450.406065 147.06646 246.349014 261.475239 472.814793 261.47524 481.660695 0 49.641277-46.380854 91.919878-79.479494 91.919878S1206.891026 577.255229 1206.891026 577.255229l148.910469-108.462516 189.345061 128.679812L1359.476153 259.230358c-57.912596 57.899234-336.424882 764.769642-834.628215 764.769642C329.970848 1023.986638 0 880.581473 0 500.047343 0 284.952958 162.687093 0 513.810604 0z"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </th:block>
+                      <th:block th:case="'xiaohongshu'">
+                        <svg
+                          class="h-6 w-6 text-zinc-400 transition group-hover:text-zinc-700 dark:text-zinc-400 dark:group-hover:text-zinc-200"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M13.95 391.93h63.58s4.56 144.8-11.26 177.65-32.85 58.41-32.85 58.41L10 561.07l3.95-169.14zM309.03 391.93h-63.58s-4.56 144.8 11.26 177.65 32.85 58.41 32.85 58.41l23.42-66.92-3.95-169.14zM128.33 306.75h64.49v305.42s0 35.29-32.25 40.15-60.23 0-60.23 0L78.14 600h48.97l1.22-293.25zM470.25 306.75h-68.14l-52.32 110.73s-15.82 35.29 15.82 35.29h36.5l-35.29 80.31s-10.95 30.42 24.34 30.42h79.09l15.82-53.54h-47.46l53.54-110.73-64.49-2.43 42.59-90.05zM351.01 587.84h109.51l-26.77 66.65H327.89zM516.49 326.22h152.1v65.71h-152.1zM559.08 391.93H626v205.64h-66.92zM497.02 597.57h194.69v56.92H465.39zM1009.3 494.75c-6.08-40.76-77.86-41.98-77.86-41.98s-1.23 24.34-0.02-46.24c1.22-70.57-62.06-80.31-62.06-80.31H711.18v65.71h47.45v59.62h-71.79v66.92h68.14V654.6l69.36-0.12V522.13l116.81 1.22 2.43 80.31H879.1L901 654.5s25.55 0.27 63.27 0 45.02-42.32 45.02-42.32 6.09-76.67 0.01-117.43z m-138.72-43.2h-46.24v-59.62h46.24v59.62z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M757.11 302.8h65.25v25.55h-65.25zM948.3 388.13s-8.86-76.68 42.44-59.78c41.52 13.69 19.16 81.22-42.44 59.78z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </th:block>
+                      <th:block th:case="*">
+                        <i
+                          class="iconfont text-xl text-zinc-400 transition group-hover:text-zinc-700 dark:text-zinc-400 dark:group-hover:text-zinc-200"
+                          th:classappend="${
+                              link.value == 'weibo' ? ' icon-weibo-fill' :
+                              link.value == 'weixin' ? ' icon-weixin' :
+                              link.value == 'weixin_mp' ? ' icon-weixin' :
+                              link.value == 'community' ? ' icon-shequ' :
+                              (' icon-' + link.value)
+                            }"
+                        ></i>
+                      </th:block>
+                    </th:block>
                   </a>
                 </th:block>
               </div>
