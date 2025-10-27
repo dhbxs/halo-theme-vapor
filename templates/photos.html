@@ -113,7 +113,6 @@
           };
           const errorHandler = () => {
             target.removeAttribute("data-fancybox");
-            console.log(123);
             loader.error(() => {
               target.addEventListener("load", loadHandler);
               target.addEventListener("error", errorHandler);

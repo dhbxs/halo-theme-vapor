@@ -26,7 +26,6 @@ function VAPORloader(parent, loadingText = "加载中", errorText = "加载失�
       }, 1000);
     },
     error: (retryCallback) => {
-      console.log("error in");
       loader.textContent = errorText;
       loader.classList.add("error");
       loader.style.cursor = "pointer";
@@ -34,7 +33,6 @@ function VAPORloader(parent, loadingText = "加载中", errorText = "加载失�
       loader.addEventListener(
         "click",
         () => {
-          console.log("error click");
           loader.textContent = loadingText;
           loader.classList.remove("error");
           if (typeof retryCallback === "function") {
