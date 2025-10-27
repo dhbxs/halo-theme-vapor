@@ -283,3 +283,16 @@ figure.f-carousel.wp-block-gallery:not(.alignfull) .f-carousel__nav .f-button {
 .prose-moments p:last-of-type {
   margin: 0 !important;
 }
+/* 超链接卡片样式 */
+.dark hyperlink-inline-card {
+  --halo-hyperlink-card-inline-bg-color: transparent !important;
+  --halo-hyperlink-card-inline-title-color: #a1a1aa !important;
+}
+
+hyperlink-inline-card {
+  --halo-hyperlink-card-inline-bg-color: transparent !important;
+  --halo-hyperlink-card-inline-title-color: #52525b !important;
+}
+hyperlink-inline-card {
+  font-weight: 600;
+}
