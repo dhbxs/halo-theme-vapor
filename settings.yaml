@@ -54,16 +54,6 @@ spec:
               name: value
               label: 类型
               options:
-                - label: Twitter链接
-                  value: twitter
-                - label: Youtube链接
-                  value: youtube
-                - label: Bilibili链接
-                  value: bilibili
-                - label: Github链接
-                  value: github
-                - label: Telegram链接
-                  value: telegram
                 - label: 首页邮箱
                   value: email
                 - label: 微博链接
