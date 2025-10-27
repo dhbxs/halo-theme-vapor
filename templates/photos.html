@@ -107,10 +107,13 @@
             parent.classList.add("loaded");
             target.classList.add("loaded");
             loader.complete();
+            target.setAttribute("data-fancybox", "gallery");
             target.removeEventListener("load", loadHandler);
             target.removeEventListener("error", errorHandler);
           };
           const errorHandler = () => {
+            target.removeAttribute("data-fancybox");
+            console.log(123);
             loader.error(() => {
               target.addEventListener("load", loadHandler);
               target.addEventListener("error", errorHandler);

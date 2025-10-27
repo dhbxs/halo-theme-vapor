@@ -795,8 +795,15 @@ thyuu-embed:not(.loaded) iframe {
   visibility: hidden;
 }
 thyuu-embed:not(.loaded) vapor-loaed,
-#photosWrapper vapor-loaed {
+#photosWrapper vapor-loaed:not(.error) {
   --loaed-play: running;
+}
+#photosWrapper vapor-loaed.error::before {
+  content: "";
+  border: none;
+  animation: none;
+  font-family: iconfont;
+  font-size: 14px;
 }
 .thyuu-block {
   padding: 1em;

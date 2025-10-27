@@ -20,17 +20,21 @@ function VAPORloader(parent, loadingText = "加载中", errorText = "加载失�
   return {
     complete: () => {
       loader.classList.add("loaded");
+      loader.classList.add("pointer-events-none");
       setTimeout(() => {
         loader.remove();
       }, 1000);
     },
     error: (retryCallback) => {
+      console.log("error in");
       loader.textContent = errorText;
       loader.classList.add("error");
       loader.style.cursor = "pointer";
+      loader.classList.add("pointer-events-auto");
       loader.addEventListener(
         "click",
         () => {
+          console.log("error click");
           loader.textContent = loadingText;
           loader.classList.remove("error");
           if (typeof retryCallback === "function") {
