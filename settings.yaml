@@ -56,6 +56,28 @@ spec:
               options:
                 - label: 首页邮箱
                   value: email
+                - label: Twitter
+                  value: twitter
+                - label: Youtube
+                  value: youtube
+                - label: 哔哩哔哩
+                  value: bilibili
+                - label: Github
+                  value: github
+                - label: Telegram
+                  value: telegram
+
+                - label: Gitee
+                  value: gitee
+                - label: 少数派
+                  value: shaoshupai
+                - label: 掘金
+                  value: juejin
+                - label: CSDN
+                  value: csdn
+                - label: 知乎
+                  value: zhihu
+
                 - label: 微博链接
                   value: weibo
                 - label: 微信（个人）
@@ -68,6 +90,7 @@ spec:
                   value: coolapk
                 - label: 社区/论坛
                   value: community
+
                 - label: 自定义
                   value: custom
             - $formkit: text
