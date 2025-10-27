@@ -262,45 +262,37 @@ function postGalleryCarousel(gallerySelector, imageSelector) {
   });
 }
 
-// 文章 代码高亮
-function postCodeHighlight() {
-  document.querySelectorAll("pre code").forEach((el) => {
-    // hljs.lineNumbersBlock(el);
-    hljs.highlightElement(el);
-  });
-}
-
 // 通用 初始化
 VAPORCopyButton("pre code", "复制代码");
 VAPORCopyButton("#copy em", null);
 animateDelayed(".page-aside", "li", 0, 0.1);
 
-function postMarkHighlight(){
-  document.querySelectorAll('mark[data-color]').forEach(el => {
-    el.style.setProperty('--custom-color', el.dataset.color);
+function postMarkHighlight() {
+  document.querySelectorAll("mark[data-color]").forEach((el) => {
+    el.style.setProperty("--custom-color", el.dataset.color);
   });
 }
 
-function postTableHighlight(){
-  let tableDomList = document.querySelectorAll('.prose table');
-  let postType = '';
+function postTableHighlight() {
+  let tableDomList = document.querySelectorAll(".prose table");
+  let postType = "";
   // 通过表格元素的父元素id是否为content判断文章是Markdown格式编写的还是富文本编辑器编写的
   // 只需要取其中一个判断即可
   if (tableDomList.length > 0) {
-    postType = tableDomList[0].parentNode.id === 'content' ? 'Markdown' : 'RichText';
+    postType = tableDomList[0].parentNode.id === "content" ? "Markdown" : "RichText";
   }
   // 如果是Markdown，则需要在表格外再套一层div
-  if (postType === 'Markdown') {
-    tableDomList.forEach(el => {
-      const wrapper = document.createElement('div');
-      wrapper.classList.add('wp-block-table');
-      wrapper.style.overflow = 'auto hidden';
+  if (postType === "Markdown") {
+    tableDomList.forEach((el) => {
+      const wrapper = document.createElement("div");
+      wrapper.classList.add("wp-block-table");
+      wrapper.style.overflow = "auto hidden";
       el.parentNode.insertBefore(wrapper, el);
       wrapper.appendChild(el);
     });
   } else {
-    tableDomList.forEach(el => {
-      el.parentNode.classList.add('wp-block-table');
+    tableDomList.forEach((el) => {
+      el.parentNode.classList.add("wp-block-table");
     });
   }
 }
@@ -308,9 +300,10 @@ function postTableHighlight(){
 document.addEventListener("DOMContentLoaded", () => {
   VAPORThemesSwitcher();
   VAPORLazysLoad("img", "loaded");
-  postCodeHighlight();
-  postMarkHighlight()
-  postTableHighlight()
+  // TODO: 判断是否安装shiki插件，如果安装了就不调用
+  // postCodeHighlight();
+  postMarkHighlight();
+  postTableHighlight();
   postGalleryCarousel(".wp-block-gallery", ".wp-block-image");
   FadeAnimate();
   VAPORHeadFixed();

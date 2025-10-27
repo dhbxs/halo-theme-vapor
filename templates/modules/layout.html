@@ -109,6 +109,21 @@
       th:if="${not #strings.isEmpty(theme.config.custom.code_js)}"
       th:utext="${theme.config.custom.code_js}"
     ></script>
+    <script>
+      // 文章 代码高亮
+      function postCodeHighlight() {
+        console.log('highlighted code by highlight.js')
+        document.querySelectorAll("pre code").forEach((el) => {
+          // hljs.lineNumbersBlock(el);
+          hljs.highlightElement(el);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        if([[${pluginFinder.available('shiki')}]]) return
+        postCodeHighlight();
+      });
+    </script>
     <th:block
       th:if="${not #strings.isEmpty(theme.config.custom.footer_html)}"
       th:utext="${theme.config.custom.footer_html}"
