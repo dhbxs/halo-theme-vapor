@@ -99,15 +99,35 @@ export function replaceLinksInElement(container: HTMLElement | null) {
     let newLinkHTML = "";
     // 默认新窗口打开
     target = target.length == 0 ? "_blank" : target;
+    let title = "";
+    // 从 text 中提取#前面的字符作为标题
+    if (text.length != 0) {
+      const index = text.indexOf("#");
+      if (index >= 0) {
+        // markdown 内容为 [测试#small](xxx) 或 [#small](xxx)
+        title = `custom-title="${text.substring(0, index)}"`;
+      } else {
+        // markdown 内容为 [测试](xxx)
+        title = `custom-title="${text}"`;
+      }
+    }
 
     if (text.includes("#regular")) {
-      newLinkHTML = `<hyperlink-card href="${escapeHtml(href)}" target="${target}" theme="regular"></hyperlink-card>`;
+      newLinkHTML = `<hyperlink-card href="${escapeHtml(
+        href
+      )}" target="${target}" theme="regular" ${title}></hyperlink-card>`;
     } else if (text.includes("#small")) {
-      newLinkHTML = `<hyperlink-card href="${escapeHtml(href)}" target="${target}" theme="small"></hyperlink-card>`;
+      newLinkHTML = `<hyperlink-card href="${escapeHtml(
+        href
+      )}" target="${target}" theme="small" ${title}></hyperlink-card>`;
     } else if (text.includes("#grid")) {
-      newLinkHTML = `<hyperlink-card href="${escapeHtml(href)}" target="${target}" theme="grid"></hyperlink-card>`;
+      newLinkHTML = `<hyperlink-card href="${escapeHtml(
+        href
+      )}" target="${target}" theme="grid" ${title}></hyperlink-card>`;
     } else {
-      newLinkHTML = `<hyperlink-inline-card href="${escapeHtml(href)}" target="${target}"></hyperlink-inline-card>`;
+      newLinkHTML = `<hyperlink-inline-card href="${escapeHtml(
+        href
+      )}" target="${target}" ${title}></hyperlink-inline-card>`;
     }
 
     // 创建临时容器并插入新元素
