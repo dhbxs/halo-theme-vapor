@@ -42,6 +42,7 @@ body {
 
 body {
   background: var(--bg-color);
+  overflow: hidden;
 }
 
 .rounded-theme {
