@@ -266,12 +266,12 @@
         const classes = el.class;
         el.setAttribute(
           "class",
-          "relative z-20 dark:brightness-75 dark:transition-[filter] rounded-xl dark:hover:brightness-100 rounded-xl" +
+          "relative z-20 dark:brightness-75 dark:transition-[filter] rounded-xl dark:hover:brightness-100 rounded-xl object-top max-h-[calc(220px_-_2.5rem)] md:max-h-[calc(55vh_-_2.5rem)] object-cover " +
             classes
         );
         el.setAttribute("data-fancybox", "images");
         const wrapper = document.createElement("div");
-        wrapper.setAttribute("class", "rounded-2xl bg-zinc-100 p-2 dark:bg-zinc-800 w-fit");
+        wrapper.setAttribute("class", "rounded-2xl bg-zinc-100 p-2 dark:bg-zinc-800  max-h-[220px] md:max-h-[55vh]");
         el.parentNode.insertBefore(wrapper, el);
         wrapper.appendChild(el);
         const altText = el.getAttribute("alt");
