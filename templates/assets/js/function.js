@@ -97,6 +97,7 @@ function VAPORThemesSwitcher() {
 // 懒加载动画
 function VAPORLazysLoad(selector, loadedClass) {
   document.querySelectorAll(selector).forEach((target) => {
+    if (target.closest("#photosWrapper")) return;
     if (target.complete) {
       target.classList.add(loadedClass);
     } else {

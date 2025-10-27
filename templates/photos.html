@@ -52,6 +52,7 @@
             </th:block>
             <div
               th:else
+              id="photosWrapper"
               class="grid grid-cols-1 overflow-hidden rounded-lg border border-zinc-200 bg-gradient-to-b from-zinc-50/50 to-white/70 sm:grid-cols-2 sm:rounded-xl md:grid-cols-3 lg:grid-cols-4 dark:border-zinc-700/40 dark:from-zinc-900/70 dark:to-zinc-800/60"
             >
               <th:block th:each="photo,iterStat : ${photos}">
@@ -96,5 +97,36 @@
   <th:block th:fragment="page_js">
     <th:block th:replace="~{modules/widgets/fancy}"></th:block>
     <script th:src="@{/assets/js/marked.umd.js?v={version}(version='1.2.2')}"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("#photosWrapper img").forEach((target) => {
+          const parent = target.parentNode;
+          if (!parent) return;
+          const loader = VAPORloader(parent, "图片加载中", "图片加载失败，点击重试");
+          const loadHandler = () => {
+            parent.classList.add("loaded");
+            target.classList.add("loaded");
+            loader.complete();
+            target.removeEventListener("load", loadHandler);
+            target.removeEventListener("error", errorHandler);
+          };
+          const errorHandler = () => {
+            loader.error(() => {
+              target.addEventListener("load", loadHandler);
+              target.addEventListener("error", errorHandler);
+              if (target.tagName === "IMG" || target.tagName === "IFRAME") {
+                target.src += "";
+              }
+            });
+          };
+          if (target.complete && target.tagName === "IMG") {
+            loadHandler();
+            return;
+          }
+          target.addEventListener("load", loadHandler);
+          target.addEventListener("error", errorHandler);
+        });
+      });
+    </script>
   </th:block>
 </html>
