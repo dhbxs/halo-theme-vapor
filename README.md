@@ -12,9 +12,11 @@
 </div>
 
 ## 🎊 声明
-Vapor是一个简约风格的博客主题
+
+Vapor 是一个简约风格的博客主题
+
 - 主题移植于： <a href="https://cali.so">Cali 的个人博客网站</a>
-- 代码仓库：[Cali 的Github](https://github.com/CaliCastle/cali.so)
+- 代码仓库：[Cali 的 Github](https://github.com/CaliCastle/cali.so)
 
 ## 🔥 预览
 
@@ -23,9 +25,10 @@ Vapor是一个简约风格的博客主题
 | 三禾木木 | https://halo.scott-studio.cn |
 
 ## 📖 主题使用文档
-- [木木笔记](http://localhost:3000/docs/vapor/guide/)
 
-## 📖 Markdown编辑器中使用 编辑器超链接卡片 插件
+- [木木笔记](http://docs.scott-studio.cn/docs/vapor/guide/)
+
+## 📖 Markdown 编辑器中使用 编辑器超链接卡片 插件
 
 ```markdown
 [三禾木木#regular](https://halo.scott-studio.cn)
@@ -60,4 +63,5 @@ Vapor是一个简约风格的博客主题
 ## 💰 赞助
 
 **如果 Halo-theme-vapor 主题对你有帮助，欢迎赞助相关开发者**
+
 - 三禾木木 [爱发电赞助](https://afdian.com/a/scottstudio)
