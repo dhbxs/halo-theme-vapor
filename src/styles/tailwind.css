@@ -297,3 +297,15 @@ hyperlink-inline-card {
 hyperlink-inline-card {
   font-weight: 600;
 }
+
+/* 订阅卡片样式 */
+.dark follow-card {
+  --follow-title-color: #52525b;
+  --follow-description-color: #71717a;
+  --follow-bg-color: transparent;
+  --follow-input-bg: transparent; 
+  --follow-button-bg: #14b8a6;
+  --follow-card-shadow: none;
+  --follow-card-border: none;
+  --follow-card-radius: none;  
+}
