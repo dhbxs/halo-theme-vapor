@@ -64,7 +64,7 @@ export function replaceLinksInElement(container: HTMLElement | null) {
         <span class="inline-flex translate-y-0.5">
             <img alt="" aria-hidden="true" loading="lazy" width="16" height="16"
                 decoding="async" data-nimg="1" class="inline h-4 w-4 rounded"
-                src="https://cali.so/api/favicon?url=${escapeHtml(domain)}"
+                src="https://api.freejk.com/gongju/favicon/?url=${escapeHtml(domain)}"
                 style="color: transparent">
         </span>
         ${escapeHtml(text)}
